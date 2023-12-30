@@ -139,7 +139,7 @@ GMAT prop.StopIfAccuracyIsViolated = true;
 
         return default_fm_prop
 
-    def add_report_file(self, traits):
+    def add_report_file(self, traits, path="SWIPE_ReportFile.tsv"):
         """
         Generates a report file given list of variables
         """
@@ -155,7 +155,7 @@ GMAT ReportFile1.UpperLeft = [ 0 0 ];
 GMAT ReportFile1.Size = [ 0 0 ];
 GMAT ReportFile1.RelativeZOrder = 0;
 GMAT ReportFile1.Maximized = false;
-GMAT ReportFile1.Filename = 'SWIPE_ReportFile.tsv';
+GMAT ReportFile1.Filename = '{path}';
 GMAT ReportFile1.Precision = 16;
 GMAT ReportFile1.Add = {{ {', '.join(traits)} }};
 GMAT ReportFile1.WriteHeaders = true;
@@ -172,7 +172,7 @@ GMAT ReportFile1.WriteReport = true;
 
         return view
 
-    def default_mission_sequence(self, sat):
+    def default_mission_sequence(self, sat, time_amount = 1.0, time_unit = "ElapsedDays"):
         """
         Runs the default mission sequence for formations
         """
@@ -186,7 +186,7 @@ GMAT ReportFile1.WriteReport = true;
 
 BeginMissionSequence;
 
-Propagate 'Prop 1 Day' prop(form) {{ {sat}.ElapsedDays = 1.0 }};
+Propagate 'Prop {time_amount} {time_unit}' prop(form) {{ {sat}.{time_unit} = {time_amount} }};
 
 """
 
