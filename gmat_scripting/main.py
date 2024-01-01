@@ -2,6 +2,7 @@
 Generates a script for GMAT to run
 """
 
+
 class GMATScript:
     def __init__(self):
         """
@@ -172,7 +173,7 @@ GMAT ReportFile1.WriteReport = true;
 
         return view
 
-    def default_mission_sequence(self, sat, time_amount = 1.0, time_unit = "ElapsedDays"):
+    def default_mission_sequence(self, sat, time_amount=1.0, time_unit="ElapsedDays"):
         """
         Runs the default mission sequence for formations
         """
